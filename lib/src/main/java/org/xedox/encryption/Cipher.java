@@ -5,18 +5,23 @@ import java.util.HashMap;
 
 public final class Cipher {
 
-    private static String SYMBOLS =
-            "1234567890qwertyuiopasdfghjklzxcvbnm,.QWERTYUIOPASDFGHJKLZXCVBNM+=/_<>[]!@#$%^&*()-'\":;,?`~\\|{}€£¥₩°•○●□■♤♡◇♧☆▪︎¤《》¡¿";
-    // possible symbols
+    private String SYMBOLS =
+            "1234567890qwertyuiopasdfghjklzxcvbnm";
+    // possible symbols // default values
     
-    public static void setPossibleSymbols(String new) {
-        SYMBOLS = new;
+    public void setPossibleSymbols(String newSymbols) {
+        SYMBOLS = newSymbols;
     }
     
-    private static HashMap<Character, Character> keys;
-
-    public static String encrypt(String text) {
+    public Cipher(String symbols) {
+        this.SYMBOLS = symbols;
         keys = new HashMap<>();
+    }
+    
+    private HashMap<Character, Character> keys;
+
+    public String encrypt(String text) {
+        
         StringBuilder encryptedText = new StringBuilder();
 
         for (int pos = 0; pos < text.length(); pos++) {
@@ -34,7 +39,7 @@ public final class Cipher {
         return encryptedText.toString();
     }
 
-    public static String decrypt(String encryptedText) {
+    public String decrypt(String encryptedText) {
         StringBuilder decryptedText = new StringBuilder();
         for (int pos = 0; pos < encryptedText.length(); pos++) {
             char current = encryptedText.charAt(pos);
@@ -53,7 +58,7 @@ public final class Cipher {
         return decryptedText.toString();
     }
 
-    public static final char getRandomChar(String text) {
+    public final char getRandomChar(String text) {
         return text.charAt(new Random().nextInt(text.length()));
     }
 }

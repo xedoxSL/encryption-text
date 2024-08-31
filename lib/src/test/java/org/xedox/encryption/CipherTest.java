@@ -7,14 +7,16 @@ public class CipherTest {
 
     @Test
     void encryptDecryptTest() {
-        String text = "Testing";
+        String text = "Hello from test!";
+        
+        Cipher cipher = new Cipher("1234567890 +=/_<>[]!@#$%^&*\"()-'\\:;,?{}₩♧◇¥£♡♤€■□●○|~`°•☆▪︎¤《》¡¿");
 
-        String encrypted = Cipher.encrypt(text);
-        String decrypted = Cipher.decrypt(encrypted);
+        String encrypted = cipher.encrypt(text);
+        String decrypted = cipher.decrypt(encrypted);
 
         System.out.println("source: " + text);
-        System.out.println("encrypted text: " + encrypted);
-        System.out.println("decrypted text: " + decrypted);
+        System.out.println("encrypted: " + encrypted);
+        System.out.println("decrypted: " + decrypted);
         assertEquals(text, decrypted);
     }
 }
