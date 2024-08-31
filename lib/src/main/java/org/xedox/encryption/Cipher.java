@@ -5,10 +5,14 @@ import java.util.HashMap;
 
 public final class Cipher {
 
-    public static final String SYMBOLS =
+    private static String SYMBOLS =
             "1234567890qwertyuiopasdfghjklzxcvbnm,.QWERTYUIOPASDFGHJKLZXCVBNM+=/_<>[]!@#$%^&*()-'\":;,?`~\\|{}€£¥₩°•○●□■♤♡◇♧☆▪︎¤《》¡¿";
     // possible symbols
-
+    
+    public static void setPossibleSymbols(String new) {
+        SYMBOLS = new;
+    }
+    
     private static HashMap<Character, Character> keys;
 
     public static String encrypt(String text) {

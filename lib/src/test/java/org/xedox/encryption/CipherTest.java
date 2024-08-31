@@ -1,15 +1,20 @@
-package org.xedox;
+package org.xedox.encryption;
 
-import org.xedox.encryption.Cipher;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public final class Main {
-    public static final void main(String[] args) {
+public class CipherTest {
+
+    @Test
+    void encryptDecryptTest() {
         String text = "Testing";
 
         String encrypted = Cipher.encrypt(text);
         String decrypted = Cipher.decrypt(encrypted);
+
         System.out.println("source: " + text);
         System.out.println("encrypted text: " + encrypted);
         System.out.println("decrypted text: " + decrypted);
+        assertEquals(text, decrypted);
     }
 }
